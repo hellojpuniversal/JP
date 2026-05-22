@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JP Universal — Translation & Language Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #1E2A3A;
+    --copper: #C4935A;
+    --cream: #F4F0E8;
+    --light: #ECEAE3;
+    --gray: #777;
+    --lgray: #ccc;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--dark);
+    border-left: 6px solid var(--copper);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 3rem;
+    height: 64px;
+  }
+
+  .nav-logo {
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .nav-logo .jp {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 700;
+    color: var(--cream); letter-spacing: -0.5px;
+  }
+  .nav-logo .universal {
+    font-size: 9px; color: var(--cream);
+    letter-spacing: 4px; opacity: 0.8;
+  }
+  .nav-logo .tagline {
+    font-size: 7px; color: var(--copper);
+    letter-spacing: 2px;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a {
+    color: var(--cream); opacity: 0.6;
+    font-size: 11px; letter-spacing: 2px;
+    text-decoration: none; text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--copper); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    border-left: 10px solid var(--copper);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 3rem 80px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'JP';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40vw; font-weight: 700;
+    color: white; opacity: 0.025;
+    position: absolute; right: -5vw; bottom: -10vw;
+    line-height: 1; pointer-events: none; letter-spacing: -10px;
+  }
+
+  .hero-eyebrow {
+    font-size: 9px; letter-spacing: 4px;
+    color: var(--copper); text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 600; color: var(--cream);
+    line-height: 1.05; letter-spacing: -1px;
+    max-width: 700px;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic; color: var(--copper);
+  }
+
+  .hero-sub {
+    margin-top: 2rem;
+    font-size: 15px; color: var(--cream); opacity: 0;
+    line-height: 1.7; max-width: 480px;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-sub span { opacity: 0.55; }
+
+  .hero-cta {
+    margin-top: 3rem;
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .btn {
+    padding: 13px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.25s;
+  }
+  .btn-primary { background: var(--copper); color: var(--cream); }
+  .btn-primary:hover { background: #b8824a; }
+  .btn-outline {
+    background: transparent; color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .btn-outline:hover { border-color: var(--copper); color: var(--copper); }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 3rem; }
+
+  .section-label {
+    font-size: 9px; letter-spacing: 4px; color: var(--copper);
+    text-transform: uppercase; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before {
+    content: ''; width: 3px; height: 16px;
+    background: var(--copper); border-radius: 2px; flex-shrink: 0;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600; line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--cream); }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center; margin-top: 4rem;
+    max-width: 1100px;
+  }
+
+  .about-text p {
+    font-size: 15px; line-height: 1.85; color: #444;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--dark);
+    padding: 1.75rem;
+    border-left: 4px solid var(--copper);
+  }
+
+  .stat-card .number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 700;
+    color: var(--cream); line-height: 1;
+  }
+  .stat-card .number span { color: var(--copper); }
+  .stat-card .label {
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--cream); opacity: 0.55;
+    text-transform: uppercase; margin-top: 8px;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--dark); border-left: 10px solid var(--copper); }
+  .services .section-label { color: var(--copper); }
+  .services h2 { color: var(--cream); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5px; margin-top: 4rem;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .service-card {
+    background: var(--dark);
+    padding: 2.5rem 2rem;
+    border-top: 2px solid transparent;
+    transition: border-color 0.25s, background 0.25s;
+    cursor: default;
+  }
+  .service-card:hover {
+    border-top-color: var(--copper);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .service-icon {
+    font-size: 28px; margin-bottom: 1.25rem;
+  }
+
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 600;
+    color: var(--cream); margin-bottom: 0.75rem;
+  }
+
+  .service-card p {
+    font-size: 13px; color: var(--cream); opacity: 0.5;
+    line-height: 1.7;
+  }
+
+  .service-tag {
+    display: inline-block; margin-top: 1.25rem;
+    padding: 4px 10px;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    border: 1px solid rgba(196,147,90,0.4); color: var(--copper);
+  }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--light); }
+
+  .pricing-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; margin-top: 4rem; max-width: 900px;
+  }
+
+  .price-block {
+    background: var(--cream);
+    border: 0.5px solid var(--lgray);
+    padding: 2.5rem;
+    position: relative;
+  }
+  .price-block::before {
+    content: ''; position: absolute;
+    left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--copper);
+  }
+
+  .price-block h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600; margin-bottom: 1.5rem;
+  }
+
+  .price-row {
+    display: flex; justify-content: space-between;
+    align-items: center; padding: 10px 0;
+    border-bottom: 0.5px solid var(--lgray);
+    font-size: 13px;
+  }
+  .price-row:last-child { border-bottom: none; }
+  .price-row .doc { color: var(--dark); }
+  .price-row .price { font-weight: 500; color: var(--dark); }
+
+  .minimum-banner {
+    margin-top: 2rem; max-width: 900px;
+    background: var(--dark);
+    border-left: 6px solid var(--copper);
+    padding: 1.25rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .minimum-banner .label {
+    font-size: 9px; letter-spacing: 3px; color: var(--copper); text-transform: uppercase;
+  }
+  .minimum-banner .desc {
+    font-size: 12px; color: var(--cream); opacity: 0.55; margin-top: 4px;
+  }
+  .minimum-banner .amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 700; color: var(--cream);
+  }
+
+  /* ── SAMPLES ── */
+  .samples { background: var(--cream); }
+
+  .samples-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; margin-top: 4rem;
+  }
+
+  .sample-card {
+    border: 0.5px solid var(--lgray);
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .sample-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(30,42,58,0.12);
+  }
+
+  .sample-header {
+    background: var(--dark); padding: 1.5rem;
+    border-left: 4px solid var(--copper);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .sample-header .type {
+    font-size: 9px; letter-spacing: 2px; color: var(--copper);
+    text-transform: uppercase;
+  }
+  .sample-header .lang {
+    font-size: 10px; color: var(--cream); opacity: 0.5;
+  }
+
+  .sample-body { padding: 1.5rem; }
+
+  .sample-col { margin-bottom: 1rem; }
+  .sample-col .col-label {
+    font-size: 8px; letter-spacing: 2px; color: var(--copper);
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+  .sample-col p {
+    font-size: 12px; line-height: 1.7; color: #555;
+    font-style: italic;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--dark);
+    border-left: 10px solid var(--copper);
+    text-align: center;
+  }
+  .contact h2 { color: var(--cream); margin: 1.5rem 0; }
+  .contact p { color: var(--cream); opacity: 0.55; font-size: 14px; max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7; }
+
+  .contact-details {
+    display: flex; gap: 3rem; justify-content: center;
+    margin-top: 3rem; flex-wrap: wrap;
+  }
+  .contact-item .c-label {
+    font-size: 8px; letter-spacing: 3px; color: var(--copper);
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+  .contact-item .c-value {
+    font-size: 14px; color: var(--cream);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); border-top: 0.5px solid rgba(255,255,255,0.06);
+    border-left: 10px solid var(--copper);
+    padding: 1.5rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer p { font-size: 11px; color: var(--cream); opacity: 0.35; }
+  footer .footer-brand {
+    font-size: 8px; letter-spacing: 3px; color: var(--copper);
+    text-transform: uppercase;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 70px 1.5rem; }
+    .hero { padding: 100px 1.5rem 60px; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="jp">JP</span>
+    <div>
+      <div class="universal">UNIVERSAL</div>
+      <div class="tagline">TRANSLATION & LANGUAGE SERVICES</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#samples">Work Samples</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <p class="hero-eyebrow">English · Spanish · Translation</p>
+  <h1>Your words,<br><em>precisely</em><br>translated.</h1>
+  <p class="hero-sub">
+    Professional English-Spanish translation for legal and immigration contexts.<br>
+    <span>Fast turnaround. Personal attention. Every project handled with care.</span>
+  </p>
+  <div class="hero-cta">
+    <a href="#contact" class="btn btn-primary">Get a Quote</a>
+    <a href="#services" class="btn btn-outline">View Services</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About</div>
+  <h2>Language is more than<br>words — it's context.</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>Hi, I'm Juliana Pelaez — a bilingual language professional with a degree in Bilingualism and over 4 years of experience in translation and project management.</p>
+      <p>I've worked across the full translation pipeline: from managing projects and coordinating teams to delivering polished, accurate translations using industry-standard CAT tools. I understand that behind every document is a real person, a real case, a real story.</p>
+      <p>What sets me apart is my attention to detail, my commitment to deadlines, and the care I bring to every project — no matter the size. When you send me a document, you get my full focus.</p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat-card">
+        <div class="number">4<span>+</span></div>
+        <div class="label">Years of Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">2</div>
+        <div class="label">Languages Mastered</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">EN<span>·</span>ES</div>
+        <div class="label">Language Pair</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">100<span>%</span></div>
+        <div class="label">Remote & Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">Services</div>
+  <h2>What I translate</h2>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="service-icon">🪪</div>
+      <h3>IDs & Official Documents</h3>
+      <p>Driver's licenses, national IDs, passports, cards — both sides translated with precision.</p>
+      <span class="service-tag">Flat Rate</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Certificates & Records</h3>
+      <p>Birth certificates, marriage records, academic credentials, and official records up to 1 page.</p>
+      <span class="service-tag">Flat Rate</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📝</div>
+      <h3>Testimonies & Declarations</h3>
+      <p>Legal narratives, sworn statements, and personal accounts handled with sensitivity and accuracy.</p>
+      <span class="service-tag">Per Word</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📖</div>
+      <h3>Personal Histories</h3>
+      <p>Life stories, immigration histories, and personal statements — preserving voice while ensuring clarity.</p>
+      <span class="service-tag">Per Word</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💬</div>
+      <h3>Communications</h3>
+      <p>Emails, letters, chat logs, and correspondence translated in context and tone.</p>
+      <span class="service-tag">Per Word</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <h3>Rush Delivery</h3>
+      <p>Need it fast? 24–48 hour turnaround available for urgent projects — just let me know.</p>
+      <span class="service-tag">+25%</span>
+    </div>
+  </div>
+  <p style="margin-top: 2rem; font-size: 12px; color: var(--cream); opacity: 0.35; letter-spacing: 1px;">
+    * These services do not include certified or apostilled translations.
+  </p>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-label">Pricing</div>
+  <h2>Clear, simple pricing.<br>No surprises.</h2>
+  <div class="pricing-grid reveal">
+    <div class="price-block">
+      <h3>Flat Rate Documents</h3>
+      <div class="price-row">
+        <span class="doc">ID / Driver's License / Card</span>
+        <span class="price">$20.00</span>
+      </div>
+      <div class="price-row">
+        <span class="doc">Certificate / Official Record</span>
+        <span class="price">$25.00</span>
+      </div>
+    </div>
+    <div class="price-block">
+      <h3>Per-Word Documents</h3>
+      <div class="price-row">
+        <span class="doc">Legal Narratives</span>
+        <span class="price">$0.08/word</span>
+      </div>
+      <div class="price-row">
+        <span class="doc">Personal Statements</span>
+        <span class="price">$0.08/word</span>
+      </div>
+      <div class="price-row">
+        <span class="doc">Communications</span>
+        <span class="price">$0.08/word</span>
+      </div>
+      <div class="price-row">
+        <span class="doc">Rush Delivery</span>
+        <span class="price">+25%</span>
+      </div>
+    </div>
+  </div>
+  <div class="minimum-banner reveal">
+    <div>
+      <div class="label">Minimum Fee</div>
+      <div class="desc">Applies to all projects regardless of word count</div>
+    </div>
+    <div class="amount">$20.00</div>
+  </div>
+</section>
+
+<!-- WORK SAMPLES -->
+<section class="samples" id="samples">
+  <div class="section-label">Work Samples</div>
+  <h2>Translation in practice</h2>
+  <p style="margin-top: 1rem; font-size: 14px; color: #555; line-height: 1.7; max-width: 560px;">
+    The following are anonymized excerpts from real projects. Client information has been removed to protect confidentiality.
+  </p>
+  <div class="samples-grid reveal">
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <span class="type">Certificate of Residence</span>
+        <span class="lang">ES → EN</span>
+      </div>
+      <div class="sample-body">
+        <div class="sample-col">
+          <div class="col-label">Original (Spanish)</div>
+          <p>"El Secretario de Gobierno certifica que el solicitante tiene domicilio en esta ciudad. Este certificado es válido por un (1) año a partir de la fecha de expedición."</p>
+        </div>
+        <div class="sample-col">
+          <div class="col-label">Translation (English)</div>
+          <p>"The Secretary of Government certifies that the applicant is domiciled in this city. This certificate is valid for one (1) year from the date of issue."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <span class="type">Sports Certification</span>
+        <span class="lang">ES → EN</span>
+      </div>
+      <div class="sample-body">
+        <div class="sample-col">
+          <div class="col-label">Original (Spanish)</div>
+          <p>"La atleta fue parte de la Liga Risaraldense de Ciclismo entre 2017 y 2024, destacándose como ciclista de alto rendimiento en pista, especializándose en pruebas de velocidad."</p>
+        </div>
+        <div class="sample-col">
+          <div class="col-label">Translation (English)</div>
+          <p>"The athlete was part of the Risaraldense Cycling League between 2017 and 2024, standing out as a high-performance track cyclist specializing in sprint events."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <span class="type">Driver's License</span>
+        <span class="lang">ES → EN</span>
+      </div>
+      <div class="sample-body">
+        <div class="sample-col">
+          <div class="col-label">Original (Spanish)</div>
+          <p>"República de Colombia. Ministerio de Transporte. Licencia de Conducción. Categoría B1 — Automóvil, Motocicleta, Cuatrimoto, Campero, Camioneta y Microbús. Servicio: Particular."</p>
+        </div>
+        <div class="sample-col">
+          <div class="col-label">Translation (English)</div>
+          <p>"Republic of Colombia. Ministry of Transportation. Driver's License. Category B1 — Automobile, Motorcycle, ATV, SUV, Pickup Truck, and Minibus. Service Type: Private Use."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <span class="type">Legal Testimony</span>
+        <span class="lang">ES → EN</span>
+      </div>
+      <div class="sample-body">
+        <div class="sample-col">
+          <div class="col-label">Original (Spanish)</div>
+          <p>"Declaro que cuando mi hija tenía cuatro años comenzó a practicar natación, y a los seis años inició con el patinaje, donde se destacó como una deportista talentosa."</p>
+        </div>
+        <div class="sample-col">
+          <div class="col-label">Translation (English)</div>
+          <p>"I declare that when my daughter was four years old, she began practicing swimming, and at the age of six she started roller skating, where she stood out as a talented athlete."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <span class="type">WhatsApp Chat</span>
+        <span class="lang">ES → EN</span>
+      </div>
+      <div class="sample-body">
+        <div class="sample-col">
+          <div class="col-label">Original (Spanish)</div>
+          <p>"En respuesta a su solicitud, se informa que no se proporcionará ninguna certificación ni se emitirán declaraciones sobre los eventos ocurridos, en consideración de mantener la confidencialidad."</p>
+        </div>
+        <div class="sample-col">
+          <div class="col-label">Translation (English)</div>
+          <p>"In response to your request, it is hereby informed that no certification will be provided nor statements issued regarding the events that occurred, in consideration of maintaining confidentiality."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <span class="type">Invoice / Administrative Fee</span>
+        <span class="lang">ES → EN</span>
+      </div>
+      <div class="sample-body">
+        <div class="sample-col">
+          <div class="col-label">Original (Spanish)</div>
+          <p>"Período: Febrero 2026. Concepto: Cuota de Administración. Total a Pagar: $390.500. Fecha límite de pago con descuento: 25 de febrero de 2026."</p>
+        </div>
+        <div class="sample-col">
+          <div class="col-label">Translation (English)</div>
+          <p>"Period: February 2026. Concept: Administration Fee. Total Amount Due: $390,500. Pay with Discount Deadline: February 25, 2026."</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label" style="justify-content: center;">Contact</div>
+  <h2>Let's work together.</h2>
+  <p>Have a document that needs translating? Send me an email and I'll get back to you with a quote — usually within a few hours.</p>
+  <a href="mailto:hellojpuniversal@gmail.com" class="btn btn-primary">hellojpuniversal@gmail.com</a>
+  <div class="contact-details">
+    <div class="contact-item">
+      <div class="c-label">Email</div>
+      <div class="c-value">hellojpuniversal@gmail.com</div>
+    </div>
+    <div class="contact-item">
+      <div class="c-label">WhatsApp</div>
+      <div class="c-value">+57 311 786 5239</div>
+    </div>
+    <div class="contact-item">
+      <div class="c-label">Languages</div>
+      <div class="c-value">English · Spanish</div>
+    </div>
+    <div class="contact-item">
+      <div class="c-label">Availability</div>
+      <div class="c-value">Remote · Worldwide</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 JP Universal. All rights reserved.</p>
+  <span class="footer-brand">JP Universal · Translation & Language Services</span>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
