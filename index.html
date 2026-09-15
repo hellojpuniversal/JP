@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JP Universal — Translation & Language Services</title>
+<title data-i18n-en="JP Universal — Translation &amp; Language Services" data-i18n-es="JP Universal — Traducción y Servicios de Idiomas">JP Universal — Translation &amp; Language Services</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -60,6 +60,8 @@
     font-size: 11px; letter-spacing: 2px;
     text-decoration: none; text-transform: uppercase;
     transition: opacity 0.2s;
+    background: none; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
   }
   .nav-links a:hover { opacity: 1; color: var(--copper); }
 
@@ -67,12 +69,17 @@
     display: flex; align-items: center; gap: 6px;
     font-size: 11px; letter-spacing: 1px;
   }
-  .lang-switch a {
+  .lang-switch button {
+    background: none; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
     color: var(--cream); opacity: 0.6;
-    text-decoration: none; transition: opacity 0.2s;
+    font-size: 11px; letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: opacity 0.2s, color 0.2s;
+    padding: 0;
   }
-  .lang-switch a:hover { opacity: 1; color: var(--copper); }
-  .lang-switch .current {
+  .lang-switch button:hover { opacity: 1; }
+  .lang-switch button.active {
     color: var(--copper); opacity: 1;
   }
   .lang-switch .sep { color: var(--cream); opacity: 0.3; }
@@ -393,7 +400,7 @@
 
   @media (max-width: 768px) {
     nav { padding: 0 1.5rem; }
-    .nav-links a:not(.lang-switch a) { display: none; }
+    .nav-links a:not(.lang-switch button) { display: none; }
     .nav-links { gap: 1rem; }
     section { padding: 70px 1.5rem; }
     .hero { padding: 100px 1.5rem 60px; }
@@ -411,63 +418,63 @@
     <span class="jp">JP</span>
     <div>
       <div class="universal">UNIVERSAL</div>
-      <div class="tagline">TRANSLATION & LANGUAGE SERVICES</div>
+      <div class="tagline" data-i18n-en="TRANSLATION &amp; LANGUAGE SERVICES" data-i18n-es="TRADUCCIÓN Y SERVICIOS DE IDIOMAS">TRANSLATION &amp; LANGUAGE SERVICES</div>
     </div>
   </div>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#samples">Work Samples</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" data-i18n-en="About" data-i18n-es="Acerca de">About</a>
+    <a href="#services" data-i18n-en="Services" data-i18n-es="Servicios">Services</a>
+    <a href="#pricing" data-i18n-en="Pricing" data-i18n-es="Precios">Pricing</a>
+    <a href="#samples" data-i18n-en="Work Samples" data-i18n-es="Muestras">Work Samples</a>
+    <a href="#contact" data-i18n-en="Contact" data-i18n-es="Contacto">Contact</a>
     <span class="lang-switch">
-      <span class="current">EN</span>
+      <button type="button" onclick="setLang('en')" id="btn-en" class="active">EN</button>
       <span class="sep">/</span>
-      <a href="es.html">ES</a>
+      <button type="button" onclick="setLang('es')" id="btn-es">ES</button>
     </span>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <p class="hero-eyebrow">English · Spanish · Translation</p>
-  <h1>Your words,<br><em>precisely</em><br>translated.</h1>
-  <p class="hero-sub">
+  <p class="hero-eyebrow" data-i18n-en="English · Spanish · Translation" data-i18n-es="Inglés · Español · Traducción">English · Spanish · Translation</p>
+  <h1 data-i18n-en="Your words,<br><em>precisely</em><br>translated." data-i18n-es="Tus palabras,<br><em>traducidas</em><br>con precisión.">Your words,<br><em>precisely</em><br>translated.</h1>
+  <p class="hero-sub" data-i18n-en="Professional English-Spanish translation for legal and immigration contexts.<br><span>Fast turnaround. Personal attention. Every project handled with care.</span>" data-i18n-es="Traducción profesional inglés-español para contextos legales y de inmigración.<br><span>Entrega rápida. Atención personalizada. Cada proyecto se maneja con cuidado.</span>">
     Professional English-Spanish translation for legal and immigration contexts.<br>
     <span>Fast turnaround. Personal attention. Every project handled with care.</span>
   </p>
   <div class="hero-cta">
-    <a href="#contact" class="btn btn-primary">Get a Quote</a>
-    <a href="#services" class="btn btn-outline">View Services</a>
+    <a href="#contact" class="btn btn-primary" data-i18n-en="Get a Quote" data-i18n-es="Solicitar Cotización">Get a Quote</a>
+    <a href="#services" class="btn btn-outline" data-i18n-en="View Services" data-i18n-es="Ver Servicios">View Services</a>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section class="about" id="about">
-  <div class="section-label">About</div>
-  <h2>Language is more than<br>words — it's context.</h2>
+  <div class="section-label" data-i18n-en="About" data-i18n-es="Acerca de">About</div>
+  <h2 data-i18n-en="Language is more than<br>words — it's context." data-i18n-es="El idioma es más que<br>palabras — es contexto.">Language is more than<br>words — it's context.</h2>
   <div class="about-grid">
     <div class="about-text reveal">
-      <p>Hi, I'm Juliana Pelaez — a bilingual language professional with a degree in Bilingualism and over 4 years of experience in translation and project management.</p>
-      <p>I've worked across the full translation pipeline: from managing projects and coordinating teams to delivering polished, accurate translations using industry-standard CAT tools. I understand that behind every document is a real person, a real case, a real story.</p>
-      <p>What sets me apart is my attention to detail, my commitment to deadlines, and the care I bring to every project — no matter the size. When you send me a document, you get my full focus.</p>
+      <p data-i18n-en="Hi, I'm Juliana Pelaez — a bilingual language professional with a degree in Bilingualism and over 4 years of experience in translation and project management." data-i18n-es="Hola, soy Juliana Pelaez — profesional bilingüe del idioma con un título en Bilingüismo y más de 4 años de experiencia en traducción y gestión de proyectos.">Hi, I'm Juliana Pelaez — a bilingual language professional with a degree in Bilingualism and over 4 years of experience in translation and project management.</p>
+      <p data-i18n-en="I've worked across the full translation pipeline: from managing projects and coordinating teams to delivering polished, accurate translations using industry-standard CAT tools. I understand that behind every document is a real person, a real case, a real story." data-i18n-es="He trabajado en todo el proceso de traducción: desde la gestión de proyectos y coordinación de equipos, hasta la entrega de traducciones pulidas y precisas utilizando herramientas CAT estándar de la industria. Entiendo que detrás de cada documento hay una persona real, un caso real, una historia real.">I've worked across the full translation pipeline: from managing projects and coordinating teams to delivering polished, accurate translations using industry-standard CAT tools. I understand that behind every document is a real person, a real case, a real story.</p>
+      <p data-i18n-en="What sets me apart is my attention to detail, my commitment to deadlines, and the care I bring to every project — no matter the size. When you send me a document, you get my full focus." data-i18n-es="Lo que me distingue es mi atención al detalle, mi compromiso con los plazos de entrega, y el cuidado que le doy a cada proyecto — sin importar el tamaño. Cuando me envías un documento, tienes toda mi atención.">What sets me apart is my attention to detail, my commitment to deadlines, and the care I bring to every project — no matter the size. When you send me a document, you get my full focus.</p>
     </div>
     <div class="about-stats reveal">
       <div class="stat-card">
         <div class="number">4<span>+</span></div>
-        <div class="label">Years of Experience</div>
+        <div class="label" data-i18n-en="Years of Experience" data-i18n-es="Años de Experiencia">Years of Experience</div>
       </div>
       <div class="stat-card">
         <div class="number">2</div>
-        <div class="label">Languages Mastered</div>
+        <div class="label" data-i18n-en="Languages Mastered" data-i18n-es="Idiomas Dominados">Languages Mastered</div>
       </div>
       <div class="stat-card">
         <div class="number">EN<span>·</span>ES</div>
-        <div class="label">Language Pair</div>
+        <div class="label" data-i18n-en="Language Pair" data-i18n-es="Par de Idiomas">Language Pair</div>
       </div>
       <div class="stat-card">
         <div class="number">100<span>%</span></div>
-        <div class="label">Remote & Available</div>
+        <div class="label" data-i18n-en="Remote &amp; Available" data-i18n-es="Remoto y Disponible">Remote &amp; Available</div>
       </div>
     </div>
   </div>
@@ -475,91 +482,91 @@
 
 <!-- SERVICES -->
 <section class="services" id="services">
-  <div class="section-label">Services</div>
-  <h2>What I translate</h2>
+  <div class="section-label" data-i18n-en="Services" data-i18n-es="Servicios">Services</div>
+  <h2 data-i18n-en="What I translate" data-i18n-es="Lo que traduzco">What I translate</h2>
   <div class="services-grid reveal">
     <div class="service-card">
       <div class="service-icon">🪪</div>
-      <h3>IDs & Official Documents</h3>
-      <p>Driver's licenses, national IDs, passports, cards — both sides translated with precision.</p>
-      <span class="service-tag">Flat Rate</span>
+      <h3 data-i18n-en="IDs &amp; Official Documents" data-i18n-es="Identificaciones y Documentos Oficiales">IDs &amp; Official Documents</h3>
+      <p data-i18n-en="Driver's licenses, national IDs, passports, cards — both sides translated with precision." data-i18n-es="Licencias de conducir, cédulas, pasaportes, tarjetas — ambos lados traducidos con precisión.">Driver's licenses, national IDs, passports, cards — both sides translated with precision.</p>
+      <span class="service-tag" data-i18n-en="Flat Rate" data-i18n-es="Tarifa Fija">Flat Rate</span>
     </div>
     <div class="service-card">
       <div class="service-icon">📋</div>
-      <h3>Certificates & Records</h3>
-      <p>Birth certificates, marriage records, academic credentials, and official records up to 1 page.</p>
-      <span class="service-tag">Flat Rate</span>
+      <h3 data-i18n-en="Certificates &amp; Records" data-i18n-es="Certificados y Registros">Certificates &amp; Records</h3>
+      <p data-i18n-en="Birth certificates, marriage records, academic credentials, and official records up to 1 page." data-i18n-es="Actas de nacimiento, actas de matrimonio, credenciales académicas, y registros oficiales de hasta 1 página.">Birth certificates, marriage records, academic credentials, and official records up to 1 page.</p>
+      <span class="service-tag" data-i18n-en="Flat Rate" data-i18n-es="Tarifa Fija">Flat Rate</span>
     </div>
     <div class="service-card">
       <div class="service-icon">📝</div>
-      <h3>Testimonies & Declarations</h3>
-      <p>Legal narratives, sworn statements, and personal accounts handled with sensitivity and accuracy.</p>
-      <span class="service-tag">Per Word</span>
+      <h3 data-i18n-en="Testimonies &amp; Declarations" data-i18n-es="Testimonios y Declaraciones">Testimonies &amp; Declarations</h3>
+      <p data-i18n-en="Legal narratives, sworn statements, and personal accounts handled with sensitivity and accuracy." data-i18n-es="Narrativas legales, declaraciones juradas, y relatos personales manejados con sensibilidad y precisión.">Legal narratives, sworn statements, and personal accounts handled with sensitivity and accuracy.</p>
+      <span class="service-tag" data-i18n-en="Per Word" data-i18n-es="Por Palabra">Per Word</span>
     </div>
     <div class="service-card">
       <div class="service-icon">📖</div>
-      <h3>Personal Histories</h3>
-      <p>Life stories, immigration histories, and personal statements — preserving voice while ensuring clarity.</p>
-      <span class="service-tag">Per Word</span>
+      <h3 data-i18n-en="Personal Histories" data-i18n-es="Historias Personales">Personal Histories</h3>
+      <p data-i18n-en="Life stories, immigration histories, and personal statements — preserving voice while ensuring clarity." data-i18n-es="Historias de vida, historias de inmigración, y declaraciones personales — preservando la voz mientras se garantiza claridad.">Life stories, immigration histories, and personal statements — preserving voice while ensuring clarity.</p>
+      <span class="service-tag" data-i18n-en="Per Word" data-i18n-es="Por Palabra">Per Word</span>
     </div>
     <div class="service-card">
       <div class="service-icon">💬</div>
-      <h3>Communications</h3>
-      <p>Emails, letters, chat logs, and correspondence translated in context and tone.</p>
-      <span class="service-tag">Per Word</span>
+      <h3 data-i18n-en="Communications" data-i18n-es="Comunicaciones">Communications</h3>
+      <p data-i18n-en="Emails, letters, chat logs, and correspondence translated in context and tone." data-i18n-es="Correos, cartas, chats, y correspondencia traducida en contexto y tono.">Emails, letters, chat logs, and correspondence translated in context and tone.</p>
+      <span class="service-tag" data-i18n-en="Per Word" data-i18n-es="Por Palabra">Per Word</span>
     </div>
     <div class="service-card">
       <div class="service-icon">⚡</div>
-      <h3>Rush Delivery</h3>
-      <p>Need it fast? 24–48 hour turnaround available for urgent projects — just let me know.</p>
+      <h3 data-i18n-en="Rush Delivery" data-i18n-es="Entrega Urgente">Rush Delivery</h3>
+      <p data-i18n-en="Need it fast? 24–48 hour turnaround available for urgent projects — just let me know." data-i18n-es="¿Lo necesitas rápido? Entrega disponible en 24–48 horas para proyectos urgentes — solo avísame.">Need it fast? 24–48 hour turnaround available for urgent projects — just let me know.</p>
       <span class="service-tag">+25%</span>
     </div>
   </div>
-  <p style="margin-top: 2rem; font-size: 12px; color: var(--cream); opacity: 0.35; letter-spacing: 1px;">
+  <p style="margin-top: 2rem; font-size: 12px; color: var(--cream); opacity: 0.35; letter-spacing: 1px;" data-i18n-en="* These services do not include certified or apostilled translations." data-i18n-es="* Estos servicios no incluyen traducciones certificadas o apostilladas.">
     * These services do not include certified or apostilled translations.
   </p>
 </section>
 
 <!-- PRICING -->
 <section class="pricing" id="pricing">
-  <div class="section-label">Pricing</div>
-  <h2>Clear, simple pricing.<br>No surprises.</h2>
+  <div class="section-label" data-i18n-en="Pricing" data-i18n-es="Precios">Pricing</div>
+  <h2 data-i18n-en="Clear, simple pricing.<br>No surprises." data-i18n-es="Precios claros y simples.<br>Sin sorpresas.">Clear, simple pricing.<br>No surprises.</h2>
   <div class="pricing-grid reveal">
     <div class="price-block">
-      <h3>Flat Rate Documents</h3>
+      <h3 data-i18n-en="Flat Rate Documents" data-i18n-es="Documentos de Tarifa Fija">Flat Rate Documents</h3>
       <div class="price-row">
-        <span class="doc">ID / Driver's License / Card</span>
+        <span class="doc" data-i18n-en="ID / Driver's License / Card" data-i18n-es="Identificación / Licencia de Conducir / Tarjeta">ID / Driver's License / Card</span>
         <span class="price">$20.00</span>
       </div>
       <div class="price-row">
-        <span class="doc">Certificate / Official Record</span>
+        <span class="doc" data-i18n-en="Certificate / Official Record" data-i18n-es="Certificado / Registro Oficial">Certificate / Official Record</span>
         <span class="price">$25.00</span>
       </div>
     </div>
     <div class="price-block">
-      <h3>Per-Word Documents</h3>
+      <h3 data-i18n-en="Per-Word Documents" data-i18n-es="Documentos por Palabra">Per-Word Documents</h3>
       <div class="price-row">
-        <span class="doc">Legal Narratives</span>
-        <span class="price">$0.08/word</span>
+        <span class="doc" data-i18n-en="Legal Narratives" data-i18n-es="Narrativas Legales">Legal Narratives</span>
+        <span class="price" data-i18n-en="$0.08/word" data-i18n-es="$0.08/palabra">$0.08/word</span>
       </div>
       <div class="price-row">
-        <span class="doc">Personal Statements</span>
-        <span class="price">$0.08/word</span>
+        <span class="doc" data-i18n-en="Personal Statements" data-i18n-es="Declaraciones Personales">Personal Statements</span>
+        <span class="price" data-i18n-en="$0.08/word" data-i18n-es="$0.08/palabra">$0.08/word</span>
       </div>
       <div class="price-row">
-        <span class="doc">Communications</span>
-        <span class="price">$0.08/word</span>
+        <span class="doc" data-i18n-en="Communications" data-i18n-es="Comunicaciones">Communications</span>
+        <span class="price" data-i18n-en="$0.08/word" data-i18n-es="$0.08/palabra">$0.08/word</span>
       </div>
       <div class="price-row">
-        <span class="doc">Rush Delivery</span>
+        <span class="doc" data-i18n-en="Rush Delivery" data-i18n-es="Entrega Urgente">Rush Delivery</span>
         <span class="price">+25%</span>
       </div>
     </div>
   </div>
   <div class="minimum-banner reveal">
     <div>
-      <div class="label">Minimum Fee</div>
-      <div class="desc">Applies to all projects regardless of word count</div>
+      <div class="label" data-i18n-en="Minimum Fee" data-i18n-es="Tarifa Mínima">Minimum Fee</div>
+      <div class="desc" data-i18n-en="Applies to all projects regardless of word count" data-i18n-es="Aplica a todos los proyectos sin importar la cantidad de palabras">Applies to all projects regardless of word count</div>
     </div>
     <div class="amount">$20.00</div>
   </div>
@@ -567,25 +574,25 @@
 
 <!-- WORK SAMPLES -->
 <section class="samples" id="samples">
-  <div class="section-label">Work Samples</div>
-  <h2>Translation in practice</h2>
-  <p style="margin-top: 1rem; font-size: 14px; color: #555; line-height: 1.7; max-width: 560px;">
+  <div class="section-label" data-i18n-en="Work Samples" data-i18n-es="Muestras de Trabajo">Work Samples</div>
+  <h2 data-i18n-en="Translation in practice" data-i18n-es="La traducción en práctica">Translation in practice</h2>
+  <p style="margin-top: 1rem; font-size: 14px; color: #555; line-height: 1.7; max-width: 560px;" data-i18n-en="The following are anonymized excerpts from real projects. Client information has been removed to protect confidentiality." data-i18n-es="A continuación, extractos anónimos de proyectos reales. La información del cliente ha sido eliminada para proteger la confidencialidad.">
     The following are anonymized excerpts from real projects. Client information has been removed to protect confidentiality.
   </p>
   <div class="samples-grid reveal">
 
     <div class="sample-card">
       <div class="sample-header">
-        <span class="type">Certificate of Residence</span>
+        <span class="type" data-i18n-en="Certificate of Residence" data-i18n-es="Certificado de Residencia">Certificate of Residence</span>
         <span class="lang">ES → EN</span>
       </div>
       <div class="sample-body">
         <div class="sample-col">
-          <div class="col-label">Original (Spanish)</div>
+          <div class="col-label" data-i18n-en="Original (Spanish)" data-i18n-es="Original (Español)">Original (Spanish)</div>
           <p>"El Secretario de Gobierno certifica que el solicitante tiene domicilio en esta ciudad. Este certificado es válido por un (1) año a partir de la fecha de expedición."</p>
         </div>
         <div class="sample-col">
-          <div class="col-label">Translation (English)</div>
+          <div class="col-label" data-i18n-en="Translation (English)" data-i18n-es="Traducción (Inglés)">Translation (English)</div>
           <p>"The Secretary of Government certifies that the applicant is domiciled in this city. This certificate is valid for one (1) year from the date of issue."</p>
         </div>
       </div>
@@ -593,16 +600,16 @@
 
     <div class="sample-card">
       <div class="sample-header">
-        <span class="type">Sports Certification</span>
+        <span class="type" data-i18n-en="Sports Certification" data-i18n-es="Certificación Deportiva">Sports Certification</span>
         <span class="lang">ES → EN</span>
       </div>
       <div class="sample-body">
         <div class="sample-col">
-          <div class="col-label">Original (Spanish)</div>
+          <div class="col-label" data-i18n-en="Original (Spanish)" data-i18n-es="Original (Español)">Original (Spanish)</div>
           <p>"La atleta fue parte de la Liga Risaraldense de Ciclismo entre 2017 y 2024, destacándose como ciclista de alto rendimiento en pista, especializándose en pruebas de velocidad."</p>
         </div>
         <div class="sample-col">
-          <div class="col-label">Translation (English)</div>
+          <div class="col-label" data-i18n-en="Translation (English)" data-i18n-es="Traducción (Inglés)">Translation (English)</div>
           <p>"The athlete was part of the Risaraldense Cycling League between 2017 and 2024, standing out as a high-performance track cyclist specializing in sprint events."</p>
         </div>
       </div>
@@ -610,16 +617,16 @@
 
     <div class="sample-card">
       <div class="sample-header">
-        <span class="type">Driver's License</span>
+        <span class="type" data-i18n-en="Driver's License" data-i18n-es="Licencia de Conducir">Driver's License</span>
         <span class="lang">ES → EN</span>
       </div>
       <div class="sample-body">
         <div class="sample-col">
-          <div class="col-label">Original (Spanish)</div>
+          <div class="col-label" data-i18n-en="Original (Spanish)" data-i18n-es="Original (Español)">Original (Spanish)</div>
           <p>"República de Colombia. Ministerio de Transporte. Licencia de Conducción. Categoría B1 — Automóvil, Motocicleta, Cuatrimoto, Campero, Camioneta y Microbús. Servicio: Particular."</p>
         </div>
         <div class="sample-col">
-          <div class="col-label">Translation (English)</div>
+          <div class="col-label" data-i18n-en="Translation (English)" data-i18n-es="Traducción (Inglés)">Translation (English)</div>
           <p>"Republic of Colombia. Ministry of Transportation. Driver's License. Category B1 — Automobile, Motorcycle, ATV, SUV, Pickup Truck, and Minibus. Service Type: Private Use."</p>
         </div>
       </div>
@@ -627,16 +634,16 @@
 
     <div class="sample-card">
       <div class="sample-header">
-        <span class="type">Legal Testimony</span>
+        <span class="type" data-i18n-en="Legal Testimony" data-i18n-es="Testimonio Legal">Legal Testimony</span>
         <span class="lang">ES → EN</span>
       </div>
       <div class="sample-body">
         <div class="sample-col">
-          <div class="col-label">Original (Spanish)</div>
+          <div class="col-label" data-i18n-en="Original (Spanish)" data-i18n-es="Original (Español)">Original (Spanish)</div>
           <p>"Declaro que cuando mi hija tenía cuatro años comenzó a practicar natación, y a los seis años inició con el patinaje, donde se destacó como una deportista talentosa."</p>
         </div>
         <div class="sample-col">
-          <div class="col-label">Translation (English)</div>
+          <div class="col-label" data-i18n-en="Translation (English)" data-i18n-es="Traducción (Inglés)">Translation (English)</div>
           <p>"I declare that when my daughter was four years old, she began practicing swimming, and at the age of six she started roller skating, where she stood out as a talented athlete."</p>
         </div>
       </div>
@@ -644,16 +651,16 @@
 
     <div class="sample-card">
       <div class="sample-header">
-        <span class="type">WhatsApp Chat</span>
+        <span class="type" data-i18n-en="WhatsApp Chat" data-i18n-es="Chat de WhatsApp">WhatsApp Chat</span>
         <span class="lang">ES → EN</span>
       </div>
       <div class="sample-body">
         <div class="sample-col">
-          <div class="col-label">Original (Spanish)</div>
+          <div class="col-label" data-i18n-en="Original (Spanish)" data-i18n-es="Original (Español)">Original (Spanish)</div>
           <p>"En respuesta a su solicitud, se informa que no se proporcionará ninguna certificación ni se emitirán declaraciones sobre los eventos ocurridos, en consideración de mantener la confidencialidad."</p>
         </div>
         <div class="sample-col">
-          <div class="col-label">Translation (English)</div>
+          <div class="col-label" data-i18n-en="Translation (English)" data-i18n-es="Traducción (Inglés)">Translation (English)</div>
           <p>"In response to your request, it is hereby informed that no certification will be provided nor statements issued regarding the events that occurred, in consideration of maintaining confidentiality."</p>
         </div>
       </div>
@@ -661,16 +668,16 @@
 
     <div class="sample-card">
       <div class="sample-header">
-        <span class="type">Invoice / Administrative Fee</span>
+        <span class="type" data-i18n-en="Invoice / Administrative Fee" data-i18n-es="Factura / Cuota Administrativa">Invoice / Administrative Fee</span>
         <span class="lang">ES → EN</span>
       </div>
       <div class="sample-body">
         <div class="sample-col">
-          <div class="col-label">Original (Spanish)</div>
+          <div class="col-label" data-i18n-en="Original (Spanish)" data-i18n-es="Original (Español)">Original (Spanish)</div>
           <p>"Período: Febrero 2026. Concepto: Cuota de Administración. Total a Pagar: $390.500. Fecha límite de pago con descuento: 25 de febrero de 2026."</p>
         </div>
         <div class="sample-col">
-          <div class="col-label">Translation (English)</div>
+          <div class="col-label" data-i18n-en="Translation (English)" data-i18n-es="Traducción (Inglés)">Translation (English)</div>
           <p>"Period: February 2026. Concept: Administration Fee. Total Amount Due: $390,500. Pay with Discount Deadline: February 25, 2026."</p>
         </div>
       </div>
@@ -681,13 +688,13 @@
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="section-label" style="justify-content: center;">Contact</div>
-  <h2>Let's work together.</h2>
-  <p>Have a document that needs translating? Send me an email and I'll get back to you with a quote — usually within a few hours.</p>
+  <div class="section-label" style="justify-content: center;" data-i18n-en="Contact" data-i18n-es="Contacto">Contact</div>
+  <h2 data-i18n-en="Let's work together." data-i18n-es="Trabajemos juntos.">Let's work together.</h2>
+  <p data-i18n-en="Have a document that needs translating? Send me an email and I'll get back to you with a quote — usually within a few hours." data-i18n-es="¿Tienes un documento que necesita traducción? Envíame un correo y te responderé con una cotización — usualmente en unas horas.">Have a document that needs translating? Send me an email and I'll get back to you with a quote — usually within a few hours.</p>
   <a href="mailto:hellojpuniversal@gmail.com" class="btn btn-primary">hellojpuniversal@gmail.com</a>
   <div class="contact-details">
     <div class="contact-item">
-      <div class="c-label">Email</div>
+      <div class="c-label" data-i18n-en="Email" data-i18n-es="Correo">Email</div>
       <div class="c-value">hellojpuniversal@gmail.com</div>
     </div>
     <div class="contact-item">
@@ -695,20 +702,20 @@
       <div class="c-value">+57 311 786 5239</div>
     </div>
     <div class="contact-item">
-      <div class="c-label">Languages</div>
-      <div class="c-value">English · Spanish</div>
+      <div class="c-label" data-i18n-en="Languages" data-i18n-es="Idiomas">Languages</div>
+      <div class="c-value" data-i18n-en="English · Spanish" data-i18n-es="Inglés · Español">English · Spanish</div>
     </div>
     <div class="contact-item">
-      <div class="c-label">Availability</div>
-      <div class="c-value">Remote · Worldwide</div>
+      <div class="c-label" data-i18n-en="Availability" data-i18n-es="Disponibilidad">Availability</div>
+      <div class="c-value" data-i18n-en="Remote · Worldwide" data-i18n-es="Remoto · Mundial">Remote · Worldwide</div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 JP Universal. All rights reserved.</p>
-  <span class="footer-brand">JP Universal · Translation & Language Services</span>
+  <p data-i18n-en="© 2026 JP Universal. All rights reserved." data-i18n-es="© 2026 JP Universal. Todos los derechos reservados.">© 2026 JP Universal. All rights reserved.</p>
+  <span class="footer-brand" data-i18n-en="JP Universal · Translation &amp; Language Services" data-i18n-es="JP Universal · Traducción y Servicios de Idiomas">JP Universal · Translation &amp; Language Services</span>
 </footer>
 
 <script>
@@ -723,6 +730,24 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  // Language toggle
+  function setLang(lang) {
+    document.querySelectorAll('[data-i18n-en]').forEach(el => {
+      const html = el.getAttribute('data-i18n-' + lang);
+      if (html !== null) el.innerHTML = html;
+    });
+    document.documentElement.setAttribute('lang', lang);
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    try { localStorage.setItem('jp-lang', lang); } catch (e) {}
+  }
+
+  (function initLang() {
+    let saved = 'en';
+    try { saved = localStorage.getItem('jp-lang') || 'en'; } catch (e) {}
+    if (saved === 'es') setLang('es');
+  })();
 </script>
 
 </body>
